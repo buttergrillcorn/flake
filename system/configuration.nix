@@ -92,6 +92,7 @@
       steam
       lutris
       bottles
+      dconf
     ];
   };
 
