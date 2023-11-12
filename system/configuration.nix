@@ -91,6 +91,7 @@
       webcord-vencord
       steam
       lutris
+      bottles
     ];
   };
 
