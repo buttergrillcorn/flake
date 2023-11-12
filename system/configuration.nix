@@ -15,6 +15,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
 
+  # Corectrl
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock.ppfeaturemask = "0xffffffff";
+    gpuOverclock.enable = true;
+  };
+
   networking.hostName = "Aloo-Paratha"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
