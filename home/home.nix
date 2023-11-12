@@ -2,7 +2,7 @@
 
 {
   imports = [
-    
+    ./hyprland.nix
   ];
 
   nixpkgs = {
@@ -42,7 +42,7 @@
     vimAlias = true;
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
-      gruvbox-material
+      # gruvbox-material
       luasnip
       friendly-snippets
       nvim-cmp
