@@ -13,6 +13,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
 
   networking.hostName = "Aloo-Paratha"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -106,6 +107,9 @@
     wget
     fasd # For Oh-My-Fish -> Quick command-line access to files and directories for POSIX shells
     lact # AMD tuning tool 
+    rustc
+    hwdata
+    libdrm
     ntfs3g # NTFS
     wineWowPackages.stable # Wine for both 32 and 64 bit
     winetricks # Wine tool
