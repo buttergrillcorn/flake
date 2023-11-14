@@ -3,7 +3,7 @@
 {
   imports = [
     ./hyprland.nix
-    ../config/doom/
+    ../config/doom/.
   ];
 
   nixpkgs = {
