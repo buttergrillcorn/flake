@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hyprland.nix
+    ../config/hyprland/hyprland.nix
   ];
 
   nixpkgs = {
