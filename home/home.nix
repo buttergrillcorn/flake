@@ -3,6 +3,7 @@
 {
   imports = [
     ./hyprland.nix
+    ../config/doom/
   ];
 
   nixpkgs = {
@@ -24,15 +25,6 @@
 
   programs.ssh.enable = true;
   services.ssh-agent.enable = true;
-
-  programs.emacs.enable = true;
-
-  # Emacs
-  services.emacs = {
-    enable = true;
-    client.enable = true;
-    socketActivation.enable = true;
-  };
 
   # Neovim
   programs.neovim = {
