@@ -1,54 +1,69 @@
-{ pkgs, config, lib, ... }:
+ { config, lib, pkgs, ... }:
 
+let
+  cfg = config.dotfiles.emacs;
+  homeDir = config.home.homeDirectory;
+in
 {
-  home = {
-    sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
-    sessionVariables = {
-      DOOMDIR = "${config.xdg.configHome}/doom-config";
-      DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
-    };
-  };
+  options.dotfiles.emacs.enable = lib.mkEnableOption "Doom Emacs";
 
-  xdg = {
-    enable = true;
-    configFile = {
-      "doom-config/config.el".text = "…";
-      "doom-config/init.el".text = "…";
-      "doom-config/packages.el".text = "…";
-      "emacs" = {
-        source = builtins.fetchGit "https://github.com/hlissner/doom-emacs";
-        onChange = "${pkgs.writeShellScript "doom-change" ''
-          export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
-          export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
-          if [ ! -d "$DOOMLOCALDIR" ]; then
-            ${config.xdg.configHome}/emacs/bin/doom -y install
-          else
-            ${config.xdg.configHome}/emacs/bin/doom -y sync -u
+  config = lib.mkIf cfg.enable {
+    programs.emacs = {
+      enable = lib.mkDefault true;
+      package = lib.mkDefault pkgs.emacsNativeComp;
+      extraConfig = ''
+        (setq dired-use-ls-dired t
+              insert-directory-program "${pkgs.coreutils}/bin/ls"
+              treemacs-python-executable "${pkgs.python3}/bin/python")
+      '';
+      extraPackages = epkgs:
+        with epkgs; [
+          # include Doom Emacs dependencies that tries to build native C code
+          emacsql-sqlite
+          pdf-tools
+          vterm
+        ];
+    };
+
+    home.activation = lib.mkIf config.programs.emacs.enable {
+      syncDoomEmacs = lib.hm.dag.entryAfter [ "installPackages" ] ''
+        queryEmacsVersion() {
+          local emacs="$1"
+          "$emacs" --batch --eval '(princ (format "%d\n" emacs-major-version))'
+        }
+
+        syncDoomEmacs() {
+          local oldEmacs newEmacs
+          oldEmacs="$(readlink -m "$oldGenPath/home-path/bin/emacs")"
+          newEmacs="$(readlink -m "$newGenPath/home-path/bin/emacs")"
+          if [[ "$newEmacs" == "$oldEmacs" ]]; then
+            return
           fi
-        ''}";
-      };
+          if [[ -x "${homeDir}/.config/emacs/bin/doom" ]]; then
+            noteEcho 'This may take a while...'
+
+            local maxfiles
+            maxfiles="$(ulimit -n)"
+            ulimit -n hard
+
+            PATH="$newGenPath/home-path/bin:$PATH" \
+              $DRY_RUN_CMD "${homeDir}/.config/emacs/bin/doom" \
+                ''${VERBOSE:+-d} sync -e > /dev/null
+
+            oldVersion="$(queryEmacsVersion "$oldEmacs")"
+            newVersion="$(queryEmacsVersion "$newEmacs")"
+            if (( oldVersion != newVersion )); then
+              PATH="$newGenPath/home-path/bin:$PATH" \
+                $DRY_RUN_CMD "${homeDir}/.config/emacs/bin/doom" \
+                  ''${VERBOSE:+-d} build > /dev/null
+            fi
+
+            ulimit -n "$maxfiles"
+          fi
+        }
+
+        syncDoomEmacs
+      '';
     };
-  };
-
-  home.packages = with pkgs; [
-    # DOOM Emacs dependencies
-    binutils
-    (ripgrep.override { withPCRE2 = true; })
-    gnutls
-    fd
-    imagemagick
-    zstd
-    nodePackages.javascript-typescript-langserver
-    sqlite
-    editorconfig-core-c
-    emacs-all-the-icons-fonts
-  ];
-
-  programs.emacs.enable = true;
-
-  services.emacs = {
-    enable = true;
-    client.enable = true;
-    socketActivation.enable = true;
   };
 }
