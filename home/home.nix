@@ -1,9 +1,10 @@
-{ inputs, lib, config, pkgs, ... }:
+{ inputs, lib, config, pkgs, nix-doom-emacs, ... }:
 
 {
   imports = [
     ./hyprland.nix
-    ../config/doom/.
+    #../config/doom/.
+    nix-doom-emacs.hmModule
   ];
 
   nixpkgs = {
@@ -28,6 +29,10 @@
 
   # Emacs
   programs.emacs.enable = true;
+  programs.doom-emacs = {
+    enable = true;
+    doomPrivateDir = ./doom.d;
+  };
   
   # Neovim
   programs.neovim = {
