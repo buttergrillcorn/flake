@@ -5,7 +5,7 @@ let
     url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
     sha256 = "01kbhy08xk4awnh2v0v630icxr7kwradk27fk23ipgd68v52c14v";
   }) {
-    doomPrivateDir = ./doom.d;  # Directory containing your config.el, init.el
+    doomPrivateDir = ../config/doom.d;  # Directory containing your config.el, init.el
                                 # and packages.el files
   };
 in
@@ -25,6 +25,21 @@ in
     homeDirectory = "/home/james";     
   };
 
+  home.packages = with pkgs; [
+    doom-emacs
+    # DOOM Emacs dependencies
+    binutils
+    (ripgrep.override { withPCRE2 = true; })
+    gnutls
+    fd
+    imagemagick
+    zstd
+    nodePackages.javascript-typescript-langserver
+    sqlite
+    editorconfig-core-c
+    emacs-all-the-icons-fonts
+  ];
+
   programs.home-manager.enable = true;
   
   programs.git = {
@@ -36,8 +51,7 @@ in
   programs.ssh.enable = true;
   services.ssh-agent.enable = true;
 
-  # Doom Emacs
-  home.packages = [ doom-emacs ];
+  # Emacs
   services.emacs.enable = true;
 
   # Neovim
