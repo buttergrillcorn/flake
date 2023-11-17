@@ -1,10 +1,19 @@
-{ inputs, lib, config, pkgs, nix-doom-emacs, ... }:
+{ inputs, lib, config, pkgs, ... }:
+
+let
+  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
+    url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
+    sha256 = "01kbhy08xk4awnh2v0v630icxr7kwradk27fk23ipgd68v52c14v";
+  }) {
+    doomPrivateDir = ./doom.d;  # Directory containing your config.el, init.el
+                                # and packages.el files
+  };
+in
 
 {
   imports = [
     ./hyprland.nix
     #../config/doom/.
-    nix-doom-emacs.hmModule
   ];
 
   nixpkgs = {
@@ -27,17 +36,14 @@
   programs.ssh.enable = true;
   services.ssh-agent.enable = true;
 
-  # Emacs
-  programs.emacs.enable = true;
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom.d;
-  };
-  
+  # Doom Emacs
+  home.packages = [ doom-emacs ];
+  services.emacs.enable = true;
+
   # Neovim
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
