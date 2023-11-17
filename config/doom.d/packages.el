@@ -53,4 +53,5 @@
 ;;   :ensure t
 ;;   :config
 ;;   (dashboard-setup-startup-hook))
-(package! dashboard)
+(require 'dashboard)
+(dashboard-setup-startup-hook)
