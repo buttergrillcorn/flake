@@ -2,14 +2,18 @@
 
 {
   imports = [
-    ./hyprland.nix
-    #../config/doom/.
+    # ./hyprland.nix
   ];
 
   nixpkgs = {
     
   };
-  
+
+  home.file = {
+    ".config/nvim".source = ../config/neovim;
+    ".config/doom".source = ../config/doom;
+  };
+
   home = {
     username = "james";
     homeDirectory = "/home/james";     
@@ -29,7 +33,6 @@
     emacs-all-the-icons-fonts
   ];
 
-  programs.home-manager.enable = true;
   
   programs.git = {
     enable = true;
@@ -41,13 +44,13 @@
   services.ssh-agent.enable = true;
 
   # Emacs
+  programs.emacs.enable = true;
   services.emacs = {
     enable = true;
     defaultEditor = true;
     startWithUserSession = true;
     socketActivation.enable = true;
   };
-  programs.emacs.enable = true;
 
   # Neovim
   programs.neovim = {
@@ -109,7 +112,7 @@
 
   programs.lazygit.enable = true;
 
-  gtk.theme = "breeze-gtk";
+  # gtk.theme = "breeze-gtk";
 
   # Fish
   programs.fish = {
@@ -149,12 +152,12 @@
     defaultEditor = false;
   };
 
-  home.file = {
-    ".config/nvim".source = ../config/neovim;
-    ".config/doom".source = ../config/doom;
-  };
-
   systemd.user.startServices = "sd-switch";
 
+#########################################################################
+
+  programs.home-manager.enable = true;
+
   home.stateVersion = "23.05";
+
 }
