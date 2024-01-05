@@ -22,9 +22,9 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 
-;; (setq doom-font (font-spec :family "Sarasa Term SC Nerd" :size 15 :weight 'Semibold)
-;;       doom-variable-pitch-font (font-spec :family "Sarasa Term SC Nerd" :size 15)
-;;       doom-unicode-font (font-spec :family "Symbols Nerd Font Mono" :size 16))
+(setq doom-font (font-spec :family "Maple Mono SC NF" :size 15 :weight 'Semibold)
+      doom-variable-pitch-font (font-spec :family "Maple Mono SC NF" :size 15)
+      doom-unicode-font (font-spec :family "Symbols Nerd Font Mono" :size 16))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -98,9 +98,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-;; Load external files
-(load! "font.el")
 
 ;; Keybinds
 (map! "C-h" 'switch-to-prev-buffer)

@@ -1,15 +1,5 @@
 { inputs, lib, config, pkgs, ... }:
 
-let
-  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
-    sha256 = "01kbhy08xk4awnh2v0v630icxr7kwradk27fk23ipgd68v52c14v";
-  }) {
-    doomPrivateDir = ../config/doom.d;  # Directory containing your config.el, init.el
-                                # and packages.el files
-  };
-in
-
 {
   imports = [
     ./hyprland.nix
@@ -26,7 +16,6 @@ in
   };
 
   home.packages = with pkgs; [
-    doom-emacs
     # DOOM Emacs dependencies
     binutils
     (ripgrep.override { withPCRE2 = true; })
@@ -52,7 +41,13 @@ in
   services.ssh-agent.enable = true;
 
   # Emacs
-  services.emacs.enable = true;
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+    startWithUserSession = true;
+    socketActivation.enable = true;
+  };
+  programs.emacs.enable = true;
 
   # Neovim
   programs.neovim = {
@@ -154,7 +149,10 @@ in
     defaultEditor = false;
   };
 
-  home.file.".config/nvim".source = ../config/neovim;
+  home.file = {
+    ".config/nvim".source = ../config/neovim;
+    ".config/doom".source = ../config/doom;
+  };
 
   systemd.user.startServices = "sd-switch";
 
