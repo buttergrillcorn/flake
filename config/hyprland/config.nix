@@ -198,7 +198,7 @@
 
       # SCREENSHOT
       bind = $mainMod_SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -
-      bind = , print, exec, grim -o eDP-1 - | swappy -f -
+      bind = , print, exec, grim -o HDMI-A-1 - | swappy -f -
 
       # LAPTOP #
       bindl = ,switch:Lid Switch, exec, swaylock -C ~/.config/swaylock/config

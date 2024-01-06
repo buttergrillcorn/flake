@@ -23,6 +23,9 @@
     swayidle
     hyprpicker
     nwg-look
+    grim
+    swappy
+    slurp
   ];
 
   wayland.windowManager.hyprland.enable = true;
