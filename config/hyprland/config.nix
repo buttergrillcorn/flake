@@ -93,7 +93,7 @@
       $file       = nemo
       $browser    = firefox
       $color      = hyprpicker -a
-      $run        = tofi-drun --drun-launch=true
+      $run        = fuzzel
       $editor     = emacsclient -c -a ""
       $tomato     = gnome-pomodoro
       $process    = kitty gotop

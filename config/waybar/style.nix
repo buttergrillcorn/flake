@@ -130,6 +130,6 @@
         padding-right: 20px;
     }
 
-  ''
+  '';
 
 }

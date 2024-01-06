@@ -17,6 +17,9 @@
     clipman
     waybar
     fuzzel
+    swaylock
+    hyprpicker
+    dunst
   ];
 
   wayland.windowManager.hyprland = {
@@ -26,6 +29,10 @@
       xdg-desktop-portal-hyprland
       libsForQt5.polkit-kde-agent
     ];
+  };
+
+  services.swayidle = {
+    enable = true;
   };
 
 }

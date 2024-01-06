@@ -4,7 +4,8 @@
   programs.waybar.enable = true;
 
   imports = [
-    ../waybar
+    ./config.nix
+    ./style.nix
   ];
 
   # home.file = {
