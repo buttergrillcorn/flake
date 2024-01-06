@@ -11,9 +11,31 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
   # boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+  boot.loader = {
+    efi = {
+      # canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      devices = [ "nodev" ];
+      useOSProber = true;
+      theme = pkgs.sleek-grub-theme;
+      extraEntries = ''
+        menuentry "Reboot" {
+          reboot
+        }
+        menuentry "Poweroff" {
+          halt
+        }
+      '';
+    };
+  };
 
   networking.hostName = "Aloo-Paratha";
   networking.networkmanager.enable = true;
@@ -23,7 +45,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Bluetooth
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -71,6 +96,8 @@
     jack.enable = true;
   };
 
+  programs.noisetorch.enable = true;
+
   services.xserver.libinput.enable = true;
 
   users.users.james = {
@@ -98,6 +125,10 @@
     gcc
     pkg-config
     zlib
+    libsForQt5.polkit-kde-agent
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    xwaylandvideobridge
   ];
 
   # Default shell
@@ -139,27 +170,60 @@
   };
 
   # Desktop Portals
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = with pkgs; [
+  #     xdg-desktop-portal-gtk
+  #     xdg-desktop-portal-hyprland
+  #   ];
+  # };
 
   # Hyprland
-  programs.hyprland.enable = true;
-  services.greetd = {
-  enable = true;
-  settings = rec {
-    initial_session = {
-      command = "${pkgs.hyprland}/bin/Hyprland";
-      user = "james";
-    };
-    default_session = initial_session;
+  programs.hyprland = {
+    enable = true;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
   };
-};
 
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/Hyprland";
+        user = "james";
+      };
+      default_session = initial_session;
+    };
+  };
+  services.blueman.enable = true;
+  programs.nm-applet = {
+    enable = true;
+    indicator = true;
+  };
+
+  security = {
+    pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
+   # pam.services.gtklock = {};
+    pam.services.login.enableGnomeKeyring = true;
+    polkit.enable = true;
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
+  };
+
+  programs.dconf = {
+    enable = true;
+  };
+
+  services.udisks2.enable = true;
 
   # Virtual Machine
   virtualisation.libvirtd.enable = true;

@@ -74,6 +74,7 @@
       exec-once = /usr/lib/xdg-desktop-portal &
       exec-once = wl-paste -t text --watch clipman store
       exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+      exec-once = swayidle -w timeout 1800 '${pkgs.swaylock} -f -c 202020 --indicator-idle-visible' timeout 2700 'swaymsg "output * power off"' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep '${pkgs.swaylock} -f -c 202020 --indicator-idle-visible'
 
       # Environment Variables
       env = GDK_SCALE,1.5
@@ -118,7 +119,7 @@
       bind = $mainMod_SHIFT,      g,        moveoutofgroup,
       bind = $mainMod,            tab,      changegroupactive,
 
-      bind = $mainMod_SHIFT,      L,        exec,               swaylock -f
+      bind = $mainMod_SHIFT,      L,        exec,               swaylock -f -c 202020 --indicator-idle-visible
       bind = $mainMod_CTRL_SHIFT, L,        exec,               hyprctl dispatch exit
 
       # HYPRLOAD #

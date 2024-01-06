@@ -4,15 +4,15 @@
   imports = [
     ../waybar
     ../kitty
+    ../mako
     ./fuzzel.nix
     ./config.nix
   ];
 
   home.packages = with pkgs; [
-    libsForQt5.polkit-kde-agent
-    xdg-desktop-portal-hyprland
-    noisetorch
-    blueman
+    # libsForQt5.polkit-kde-agent
+    # xdg-desktop-portal-hyprland
+    # noisetorch
     swww
     udiskie
     wl-clipboard
@@ -20,9 +20,8 @@
     waybar
     fuzzel
     swaylock
+    swayidle
     hyprpicker
-    dunst
-    networkmanagerapplet
     nwg-look
   ];
 

@@ -13,6 +13,7 @@
     "Pictures/monochrome-building.jpeg".source = ../config/monochrome-building.jpeg;
     ".config/nvim".source = ../config/neovim;
     ".config/doom".source = ../config/doom;
+    ".config/ranger/rc.conf".text = "set preview_images true\nset preview_images_method kitty";
   };
 
   home = {
@@ -32,18 +33,27 @@
     sqlite
     editorconfig-core-c
     emacs-all-the-icons-fonts
+    libvterm
+    libtool
+    cmake
+    gnumake
+    libgcc
+    python3
 
     # Must
     cinnamon.nemo-with-extensions
     firefox
+    ranger
+    python311Packages.pillow
+    w3m
 
     helix
 
     # Communication
     # webcord-vencord
-    discord-screenaudio
+    # discord-screenaudio
     webcord
-    vesktop
+    # vesktop
 
     # Gaming
     steam
@@ -62,7 +72,13 @@
   services.ssh-agent.enable = true;
 
   # Emacs
-  programs.emacs.enable = true;
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+      epkgs.vterm
+      epkgs.vterm-toggle
+    ];
+  };
   services.emacs = {
     enable = true;
     defaultEditor = true;
