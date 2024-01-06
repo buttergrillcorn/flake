@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # ./hyprland.nix
+    ../config/hyprland
   ];
 
   nixpkgs = {
@@ -31,6 +31,20 @@
     sqlite
     editorconfig-core-c
     emacs-all-the-icons-fonts
+
+    # Must
+    cinnamon.nemo-with-extensions
+    firefox
+
+    helix
+
+    # Communication
+    webcord-vencord
+
+    # Gaming
+    steam
+    lutris
+    bottles
   ];
 
   
@@ -150,6 +164,12 @@
       };
     };
     defaultEditor = false;
+  };
+
+  # Gammastep
+  services.gammastep = {
+    enable = true;
+    provider = "geoclue2";
   };
 
   systemd.user.startServices = "sd-switch";

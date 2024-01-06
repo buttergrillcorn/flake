@@ -1,0 +1,121 @@
+{ inputs, lib, config, pkgs, ...}:
+
+{
+  programs.waybar.settings = ''
+
+    {
+        // --- Main ---
+        "layer": "top",
+        "position": "top",
+        "height": 15,
+        "spacing": 0,
+        "margin-top": 5,
+        "margin-left": 8,
+        "margin-right": 8,
+
+        // --- <- Left <- ---
+        "modules-left": [
+            "hyprland/submap",
+            "idle_inhibitor",
+            "hyprland/workspaces",
+        ],
+
+        // --- -> Center <- ---
+        "modules-center": [
+            "hyprland/window",
+        ],
+
+        // --- -> Right -> ---
+        "modules-right": [
+            "tray",
+            "privacy",
+            "pulseaudio",
+            "pulseaudio/slider",
+            "battery",
+            "clock",
+        ],
+
+        // --- Hyprland ---
+        "hyprland/submap": {
+            "format": "{}",
+        },
+        "hyprland/window": {
+            "format": "{class} : {title}",
+        },
+        "hyprland/workspaces": {
+            "format": "{id}",
+            "persistent-workspaces": {
+                "*": 9,
+            },
+        },
+        "wlr/taskbar": {
+            "format": "{icon}",
+            ""
+        },
+        "custom/scratchpad": {
+            "interval": 3,
+            "return-type": "json",
+            "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [..  | (.nodes? + .floating_nodes?) // empty | .[] | select(.id |IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes | length)\", tooltip: $scratch_nodes | map(\"\\(.app_id // .window_properties.class) (\\(.id)): \\(.name)\") | join(\"\\n\") } else empty end'",
+            "format": "SCRATCH: {}",
+            "on-click": "exec swaymsg 'scratchpad show'",
+            "on-click-right": "exec swaymsg 'move scratchpad'"
+        },
+
+        // --- Clock ---
+        "clock": {
+            "format": "{:%Y-%m-%d | %H:%M:%S}",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                "mode"          : "year",
+                "mode-mon-col"  : 3,
+                "weeks-pos"     : "right",
+                "on-scroll"     : 1,
+                "on-click-right": "mode",
+                "format": {
+                    "months":       "<span color='#ffead3'><b>{}</b></span>",
+                    "days":         "<span color='#ecc6d9'><b>{}</b></span>",
+                    "weeks":        "<span color='#99ffdd'><b>W{}</b></span>",
+                    "weekdays":     "<span color='#ffcc66'><b>{}</b></span>",
+                    "today":        "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+            },
+            "actions": {
+                "on-click-right": "mode",
+                "on-click-forward": "tz_up",
+                "on-click-backward": "tz_down",
+                "on-scroll-up": "shift_up",
+                "on-scroll-down": "shift_down"
+            }
+        },
+
+        // --- PulseAudio ---
+        "pulseaudio": {
+            "format": "VOLUME:",
+            "format-muted": "MUTED:",
+            "format-bluetooth": "BLUETOOTH:",
+            "on-click": "pavucontrol"
+        },
+
+        // --- Tray ---
+        "tray": {
+            "icon-size": 18,
+            "spacing": 15,
+        },
+
+        // --- Idle Inhibitor ---
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "󰈈",
+                "deactivated": "󰈉",
+            },
+        },
+
+        // --- Battery ---
+        "battery": {
+            "format": "BATTERY: {capacity}%",
+        },
+    }
+
+  ''
+}
