@@ -47,8 +47,8 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -137,6 +137,32 @@
         fcitx5-chinese-addons
     ];
   };
+
+  # Desktop Portals
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+  };
+
+  # Hyprland
+  programs.hyprland.portalPackage = with pkgs; [
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+  ];
+  services.greetd = {
+  enable = true;
+  settings = rec {
+    initial_session = {
+      command = "${pkgs.hyprland}/bin/Hyprland";
+      user = "james";
+    };
+    default_session = initial_session;
+  };
+};
+
 
   # Virtual Machine
   virtualisation.libvirtd.enable = true;

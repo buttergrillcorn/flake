@@ -6,13 +6,10 @@
 
       # Display & Devices
       monitor = , highres, auto, 1
-      inputs {
+      input {
         kb_layout = us
         follow_mouse = 1
         accel_profile = flat
-      }
-      gesture {
-        workspace_swipe = on
       }
 
       # General
@@ -20,8 +17,8 @@
         gaps_in = 5
         gaps_out = 7
         border_size = 2
-        col.active_border = 0xFFFFFFFF
-        col.inactive_border = 0xFF000000
+        col.active_border = 0xFFdfdfdf
+        col.inactive_border = 0xFF606060
         layout = dwindle
         resize_on_border = true
       }
@@ -29,26 +26,19 @@
       # Decoration
       decoration {
         rounding = 0
-        multisample_edge = true
         active_opacity = 0.95
         inactive_opacity = 0.95
         fullscreen_opacity = 1
         drop_shadow = yes
-        shadow_range = 10
-        shadow_render_power = 10
-        col.shadow = 0xFF000000
+        shadow_range = 3
+        shadow_render_power = 5
+        col.shadow = 0xffffffff
         shadow_ignore_window = true
         dim_inactive = true
         dim_strength = 0.1
         blur {
           enabled = yes
-          new_optimization = true
         }
-      }
-
-      # Animation
-      animation {
-        enabled = yes
       }
 
       # Layouts
@@ -63,7 +53,6 @@
       # Misc
       misc {
            disable_hyprland_logo = true
-           render_titles_in_groupbar = false
       }
 
       # Autostart
@@ -71,16 +60,19 @@
       exec-once = sleep 2 && noisetorch -i -o &
       exec-once = waybar &
       exec-once = sleep 2 && swww init &
-      exec-once = swww img ~/Pictures/Wallpapers/solarized-arch.png &
+      exec-once = swww img ~/Pictures/monochrome-building.jpeg &
       exec-once = nm-applet --indicator &
       exec-once = blueman-applet &
-      exec-once =	fcitx5 &
-      exec-once =	kdeconnect-indicator &
+      exec-once = fcitx5 &
+      exec-once = kdeconnect-indicator &
       exec-once = udiskie --automount --notify &
       exec-once = sleep 2 && syncthingtray  --wait &
       exec-once = /usr/lib/polkit-kde-authentication-agent-1
-      exec-once =	wl-paste -t text --watch clipman store
-      exec-once =	xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+      exec-once = /usr/lib/xdg-desktop-portal-hyprland &
+      exec-once = sleep 2
+      exec-once = /usr/lib/xdg-desktop-portal &
+      exec-once = wl-paste -t text --watch clipman store
+      exec-once = xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
 
       # Environment Variables
       env = GDK_SCALE,1.5

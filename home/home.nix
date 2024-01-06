@@ -10,6 +10,7 @@
   };
 
   home.file = {
+    "Pictures/monochrome-building.jpeg".source = ../config/monochrome-building.jpeg;
     ".config/nvim".source = ../config/neovim;
     ".config/doom".source = ../config/doom;
   };

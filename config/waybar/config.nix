@@ -32,7 +32,7 @@
             format = "{}";
         };
         "hyprland/window" = {
-            format = "{class} : {title}";
+            format = "{title}";
         };
         "hyprland/workspaces" = {
             format = "{id}";
