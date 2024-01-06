@@ -15,8 +15,8 @@
 
       # General
       general {
-        gaps_in = 5
-        gaps_out = 7
+        gaps_in = 7
+        gaps_out = 10
         border_size = 1
         col.active_border = 0xFFdfdfdf
         col.inactive_border = 0xFF606060

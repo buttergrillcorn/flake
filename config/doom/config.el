@@ -155,3 +155,7 @@
 ;; Org Super Agenda
 (after! org
   (setq org-super-agenda-mode t))
+
+;; Centaur Tab
+(after! centaur-tabs
+  (centaur-tabs-group-by-projectile-project))

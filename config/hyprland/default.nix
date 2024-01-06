@@ -26,6 +26,7 @@
     grim
     swappy
     slurp
+    pavucontrol
   ];
 
   wayland.windowManager.hyprland.enable = true;
