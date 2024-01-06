@@ -40,7 +40,10 @@
     helix
 
     # Communication
-    webcord-vencord
+    # webcord-vencord
+    discord-screenaudio
+    webcord
+    vesktop
 
     # Gaming
     steam

@@ -23,6 +23,7 @@
     hyprpicker
     dunst
     networkmanagerapplet
+    nwg-look
   ];
 
   wayland.windowManager.hyprland.enable = true;
@@ -43,12 +44,12 @@
     enable = true;
     theme = {
       package = pkgs.fluent-gtk-theme;
-      name = "Fluent-Remix-GTK-Grey-Dark";
+      name = "Fluent-Dark-compact";
     };
 
     iconTheme = {
       package = pkgs.qogir-icon-theme;
-      name = "Qogir-Dark";
+      name = "Qogir-dark";
     };
 
     font = {

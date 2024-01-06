@@ -6,6 +6,7 @@
 
       # Display & Devices
       monitor = , highres, auto, 1
+      monitor = HDMI-A-1, 2560x1440@144, 0x0, 1
       input {
         kb_layout = us
         follow_mouse = 1
@@ -16,7 +17,7 @@
       general {
         gaps_in = 5
         gaps_out = 7
-        border_size = 2
+        border_size = 1
         col.active_border = 0xFFdfdfdf
         col.inactive_border = 0xFF606060
         layout = dwindle
@@ -98,7 +99,7 @@
       bind = $mainMod_SHIFT,      E,        exec,   [float;size 45% 40%;center] $file
       bind = $mainMod,            D,        exec,   $run
       bind = $mainMod,            B,        exec,   [tile]$browser
-      bind = $mainMod,            N,        exec,   $note
+      bind = $mainMod,            N,        exec,   $editor
       bind = $mainMod_SHIFT,      N,        exec,   [float;size 45% 40%;center] $editor
       bind = $mainMod,            T,        exec,   $tomato
       bind = $mainMod_SHIFT,      T,        exec,   $todo

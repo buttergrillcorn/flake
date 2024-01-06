@@ -148,10 +148,7 @@
   };
 
   # Hyprland
-  programs.hyprland.portalPackage = with pkgs; [
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-  ];
+  programs.hyprland.enable = true;
   services.greetd = {
   enable = true;
   settings = rec {
