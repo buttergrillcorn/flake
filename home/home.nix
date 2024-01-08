@@ -2,7 +2,10 @@
 
 {
   imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+
     ../config/hyprland
+    ../config/nixvim
   ];
 
   nixpkgs = {
@@ -11,7 +14,7 @@
 
   home.file = {
     "Pictures/monochrome-building.jpeg".source = ../config/monochrome-building.jpeg;
-    ".config/nvim".source = ../config/neovim;
+    # ".config/nvim".source = ../config/neovim;
     ".config/doom".source = ../config/doom;
     ".config/ranger/rc.conf".text = "set preview_images true\nset preview_images_method kitty";
   };
@@ -87,62 +90,62 @@
   };
 
   # Neovim
-  programs.neovim = {
-    enable = true;
-    defaultEditor = false;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      # gruvbox-material
-      luasnip
-      friendly-snippets
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp_luasnip
-      mini-nvim
-      neo-tree-nvim
-      telescope-fzf-native-nvim
-      flash-nvim
-      nvim-spectre
-      which-key-nvim
-      gitsigns-nvim
-      vim-illuminate
-      trouble-nvim
-      todo-comments-nvim
-      telescope-nvim
-      conform-nvim
-      nvim-lint
-      mason-nvim
-      mason-lspconfig-nvim
-      nvim-lspconfig
-      neodev-nvim
-      nvim-treesitter
-      nvim-treesitter-textobjects
-      nvim-treesitter-context
-      nvim-ts-autotag
-      nvim-notify
-      dressing-nvim
-      bufferline-nvim
-      lualine-nvim
-      indent-blankline-nvim
-      noice-nvim
-      nvim-web-devicons
-      nui-nvim
-      dashboard-nvim
-      vim-startuptime
-      alpha-nvim
-      plenary-nvim
-      persistence-nvim
-      lazygit-nvim
-      lazy-nvim
-      lazy-lsp-nvim
-      LazyVim
-      orgmode
-    ];
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   defaultEditor = false;
+  #   viAlias = true;
+  #   vimAlias = true;
+  #   vimdiffAlias = true;
+  #   plugins = with pkgs.vimPlugins; [
+  #     # gruvbox-material
+  #     luasnip
+  #     friendly-snippets
+  #     nvim-cmp
+  #     cmp-nvim-lsp
+  #     cmp-buffer
+  #     cmp-path
+  #     cmp_luasnip
+  #     mini-nvim
+  #     neo-tree-nvim
+  #     telescope-fzf-native-nvim
+  #     flash-nvim
+  #     nvim-spectre
+  #     which-key-nvim
+  #     gitsigns-nvim
+  #     vim-illuminate
+  #     trouble-nvim
+  #     todo-comments-nvim
+  #     telescope-nvim
+  #     conform-nvim
+  #     nvim-lint
+  #     mason-nvim
+  #     mason-lspconfig-nvim
+  #     nvim-lspconfig
+  #     neodev-nvim
+  #     nvim-treesitter
+  #     nvim-treesitter-textobjects
+  #     nvim-treesitter-context
+  #     nvim-ts-autotag
+  #     nvim-notify
+  #     dressing-nvim
+  #     bufferline-nvim
+  #     lualine-nvim
+  #     indent-blankline-nvim
+  #     noice-nvim
+  #     nvim-web-devicons
+  #     nui-nvim
+  #     dashboard-nvim
+  #     vim-startuptime
+  #     alpha-nvim
+  #     plenary-nvim
+  #     persistence-nvim
+  #     lazygit-nvim
+  #     lazy-nvim
+  #     lazy-lsp-nvim
+  #     LazyVim
+  #     orgmode
+  #   ];
+  # };
 
   programs.lazygit.enable = true;
 

@@ -37,6 +37,15 @@
     };
   };
 
+  # NTFS
+  boot.supportedFilesystems = [ "ntfs" ];
+
+  fileSystems."/media/gamedisk" = { 
+    device = "/dev/sdb1";
+    fsType = "ntfs-3g"; 
+    options = [ "rw" "uid=1000"];
+  };
+
   networking.hostName = "Aloo-Paratha";
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
