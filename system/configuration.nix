@@ -122,7 +122,6 @@
     wget
     fasd # For Oh-My-Fish -> Quick command-line access to files and directories for POSIX shells
     lact # AMD tuning tool 
-    rustc
     hwdata
     libdrm
     ntfs3g # NTFS
@@ -138,6 +137,7 @@
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     xwaylandvideobridge
+    rustup
   ];
 
   # Default shell
