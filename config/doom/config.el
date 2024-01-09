@@ -158,4 +158,5 @@
 
 ;; Centaur Tab
 (after! centaur-tabs
-  (centaur-tabs-group-by-projectile-project))
+  (centaur-tabs-group-by-projectile-project)
+  (setq centaur-tabs-set-bar 'right))
