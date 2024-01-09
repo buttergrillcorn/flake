@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim, ... }@inputs:
     let
       lib = nixpkgs.lib;
     in {
@@ -26,7 +26,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.james = import ./home/home.nix;
+            home-manager.users.james = {
+              imports = [
+              ./home/home.nix
+              nixvim.homeManagerModules.nixvim
+              ];
+            };
           }
         ];
       };

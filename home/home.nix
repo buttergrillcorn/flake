@@ -2,15 +2,9 @@
 
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-
     ../config/hyprland
     ../config/nixvim
   ];
-
-  nixpkgs = {
-    
-  };
 
   home.file = {
     "Pictures/monochrome-building.jpeg".source = ../config/monochrome-building.jpeg;
