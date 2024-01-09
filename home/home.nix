@@ -36,6 +36,7 @@
     gnumake
     libgcc
     python3
+    rust-analyzer
 
     # Must
     cinnamon.nemo-with-extensions
