@@ -47,6 +47,10 @@
     ranger
     python311Packages.pillow
     w3m
+    fzf
+    fd
+    bat
+    grc
 
     helix
 
@@ -162,6 +166,31 @@
           sha256 = "06v37hqy5yrv5a6ssd1p3cjd9y3hnp19d3ab7dag56fs1qmgyhbs";
         };
       }
+
+      {
+        name = "boxfish";
+        src = pkgs.fetchFromGitHub {
+          owner = "joelwanner";
+          repo = "theme-boxfish";
+          rev = "7c448cef4c61e7b66e8f57afd14c6a6764b19dc7";
+          sha256 = "sha256-vW5qE9WQhG7gQE1SHCksj0wNm324GwvGaTBGKMyIJuk=";
+        };
+      }
+
+      { name = "autopair"; src = pkgs.fishPlugins.autopair.src; }
+
+      { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
+
+      { name = "done"; src = pkgs.fishPlugins.done.src; }
+
+      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
+
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+
+      { name = "bass"; src = pkgs.fishPlugins.bass.src; }
+
+      { name = "tide"; src = pkgs.fishPlugins.tide.src; }
+
     ];
     shellAliases = {
       up = "sudo nixos-rebuild switch --flake ~/.flake/. ";
