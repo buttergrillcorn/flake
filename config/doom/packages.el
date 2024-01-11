@@ -58,5 +58,5 @@
 (package! zoom)
 (package! beacon)
 ;; (package! golden-ratio)
-(package! org-modern)
-(package! org-super-agenda)
+;; (package! org-modern)
+;; (package! org-super-agenda)

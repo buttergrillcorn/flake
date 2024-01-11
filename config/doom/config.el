@@ -149,14 +149,17 @@
 ;;   (setq golden-ratio-auto-scale 1))
 
 ;; Org Modern
-(after! org
-  (global-org-modern-mode))
+;; (after! org
+;;   (global-org-modern-mode))
 
 ;; Org Super Agenda
-(after! org
-  (setq org-super-agenda-mode t))
+;; (after! org
+;;   (setq org-super-agenda-mode t))
 
 ;; Centaur Tab
 (after! centaur-tabs
   (centaur-tabs-group-by-projectile-project)
   (setq centaur-tabs-set-bar 'right))
+
+;; Pomodoro
+(setq org-pomodoro-length 45)
