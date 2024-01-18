@@ -119,7 +119,7 @@
       bind = $mainMod_SHIFT,      g,        moveoutofgroup,
       bind = $mainMod,            tab,      changegroupactive,
 
-      bind = $mainMod_SHIFT,      L,        exec,               swaylock -f -c 202020 --indicator-idle-visible
+      bind = $mainMod_CTRL,      L,        exec,               swaylock -f -c 202020 --indicator-idle-visible
       bind = $mainMod_CTRL_SHIFT, L,        exec,               hyprctl dispatch exit
 
       # HYPRLOAD #
@@ -138,6 +138,16 @@
       bind = $mainMod, l, movefocus, r
       bind = $mainMod, k, movefocus, u
       bind = $mainMod, j, movefocus, d
+
+      # Move window with mainMod + Shift + hjkl
+      bind = $mainMod_SHIFT, h, movewindow, l
+      bind = $mainMod_SHIFT, l, movewindow, r
+      bind = $mainMod_SHIFT, k, movewindow, u
+      bind = $mainMod_SHIFT, j, movewindow, d
+
+      # Focus cycle
+      bind = $mainMod, Tab, cyclenext,
+      bind = $mainMod_SHIFT, Tab, cyclenext, prev
 
       # Switch workspaces with mainMod + [0-9]
       bind = $mainMod, 1, workspace, 1
