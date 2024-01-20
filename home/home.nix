@@ -64,6 +64,9 @@
     steam
     lutris
     bottles
+
+    # Utilities
+    calibre
   ];
 
   
