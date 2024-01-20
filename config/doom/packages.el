@@ -60,3 +60,4 @@
 ;; (package! golden-ratio)
 ;; (package! org-modern)
 ;; (package! org-super-agenda)
+(package! org-habit-stats)

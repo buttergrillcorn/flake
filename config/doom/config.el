@@ -112,6 +112,9 @@
 ;; Org auto list
 (add-hook 'org-mode-hook
           (lambda () (org-autolist-mode)))
+;; Org Habit
+(add-to-list 'org-modules 'org-habit t)
+(setq org-habit-show-habits-only-for-today nil)
 
 ;; Projects
 (projectile-add-known-project "~/org")
@@ -163,3 +166,10 @@
 
 ;; Pomodoro
 (setq org-pomodoro-length 45)
+
+;; Org Habit Status
+(map! :map org-mode-map
+      "C-c h" 'org-habit-stats-view-habit-at-point)
+(map! :map org-agenda-mode-map
+      "H" 'org-habit-stats-view-habit-at-point-agenda)
+(add-hook 'org-after-todo-state-change-hook 'org-habit-stats-update-properties)
