@@ -57,9 +57,10 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    package = pkgs.bluez5-experimental;
     settings = {
       General = {
-        Experimental = true;
+        Experimental = "true";
       };
     };
   };
@@ -84,15 +85,17 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma6.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -125,6 +128,7 @@
   environment.systemPackages = with pkgs; [
     # others
     wget
+    killall
     fasd # For Oh-My-Fish -> Quick command-line access to files and directories for POSIX shells
     lact # AMD tuning tool 
     hwdata
@@ -138,11 +142,13 @@
     gcc
     pkg-config
     zlib
-    libsForQt5.polkit-kde-agent
+    # libsForQt5.polkit-kde-agent
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     xwaylandvideobridge
     rustup
+    gnome.seahorse
+    lxqt.lxqt-policykit
   ];
 
   # Default shell
@@ -221,7 +227,7 @@
         auth include login
       '';
     };
-   # pam.services.gtklock = {};
+    # pam.services.gtklock = {};
     pam.services.login.enableGnomeKeyring = true;
     polkit.enable = true;
   };

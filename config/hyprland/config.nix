@@ -68,7 +68,8 @@
       exec-once = kdeconnect-indicator &
       exec-once = udiskie --automount --notify &
       exec-once = sleep 2 && syncthingtray  --wait &
-      exec-once = /usr/lib/polkit-kde-authentication-agent-1
+      ##exec-once = /usr/lib/polkit-kde-authentication-agent-1
+      exec-once = lxqt-policykit-agent &
       exec-once = /usr/lib/xdg-desktop-portal-hyprland &
       exec-once = sleep 2
       exec-once = /usr/lib/xdg-desktop-portal &

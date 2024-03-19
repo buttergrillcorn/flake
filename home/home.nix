@@ -58,6 +58,7 @@
     # webcord-vencord
     # discord-screenaudio
     webcord
+    discord
     # vesktop
 
     # Gaming
@@ -67,6 +68,7 @@
 
     # Utilities
     calibre
+    pureref
   ];
 
   
