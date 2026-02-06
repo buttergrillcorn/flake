@@ -1,12 +1,16 @@
 { config, pkgs, ... }:
 
-{ 
+{
   home.username = "james";
   home.homeDirectory = "/home/james";
-  home.stateVersion = "25.11"; 
+  home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
-    hello
+    fd
+    lazygit
+    fzf
+    ripgrep
+    gemini-cli
   ];
 
   home.file = {
