@@ -213,6 +213,8 @@
   (ultra-scroll-mode 1))
 
 ;; --- GPTel ---
+(load! "~/.config/doom-secrets.el")
+
 (use-package! gptel
   :config
   (setq! gptel-api-key my-gpt-api-key)
@@ -229,7 +231,7 @@
               openrouter/aurora-alpha))
   (gptel-make-deepseek "DeepSeek"
     :stream t
-    :key "DEEPSEEK_API"))
+    :key my-deepseek-api-key))
 
 ;; --- Spelling Dictionary Fix (For Nix) ---
 (setq ispell-personal-dictionary "~/ispell/en.pws")

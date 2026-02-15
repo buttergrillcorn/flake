@@ -22,6 +22,7 @@
     imports = [
       inputs.nixvim.homeModules.nixvim
       inputs.nix-doom-emacs-unstraightened.homeModule
+      inputs.sops-nix.homeManagerModules.sops
       ../../modules/core/home.nix
 
       # --- Home Modules ---
