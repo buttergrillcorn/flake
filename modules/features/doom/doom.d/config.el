@@ -229,7 +229,7 @@
               openrouter/aurora-alpha))
   (gptel-make-deepseek "DeepSeek"
     :stream t
-    :key my-deepseek-api-key))
+    :key "DEEPSEEK_API"))
 
 ;; --- Spelling Dictionary Fix (For Nix) ---
 (setq ispell-personal-dictionary "~/ispell/en.pws")

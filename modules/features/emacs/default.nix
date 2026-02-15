@@ -25,12 +25,4 @@
     cmake
     libtool
   ];
-
-  # programs.emacs.extraPackages =
-  #   epkgs: with epkgs; [
-  #     vterm
-  #     use-package
-  #     magit
-  #     org
-  #   ];
 }
