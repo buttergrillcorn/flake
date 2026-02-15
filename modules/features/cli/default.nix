@@ -17,5 +17,6 @@
     eza
     chafa
     zoxide
+    jq
   ];
 }
