@@ -1,18 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports = [
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  # --- Network ---
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/London";
@@ -29,19 +23,16 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  services.xserver.enable = true;
-
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -58,12 +49,16 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
     ];
     packages = with pkgs; [
     ];
   };
 
   programs.firefox.enable = true;
+
+  # Fix man-cache slow rebuild
+  documentation.man.generateCaches = false;
 
   programs.nh = {
     enable = true;
@@ -80,16 +75,29 @@
     kitty
     nh
     direnv
+    trashy
   ];
+
+  services.udisks2.enable = true;
 
   fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
+    maple-mono.NF
+    maple-mono.NF-CN
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   system.stateVersion = "25.11"; # Did you read the comment?
 
