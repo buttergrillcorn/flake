@@ -26,6 +26,8 @@
           en-science
         ]
       ))
+      # Latex
+      texlive.combined.scheme-medium
     ];
   };
 
