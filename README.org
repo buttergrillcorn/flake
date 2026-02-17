@@ -1,0 +1,70 @@
+#+title: My Personal Flake
+#+author: Yu Li (James)
+#+description: A modular NixOS configuration made for my personal devices.
+* Overview
+This is my personal NixOS configuration, managed using [[https://nixos.wiki/wiki/Flakes][Nix Flake]] and [[https://flake.parts][Flake-parts]].
+
+I am (and probably will for a long time) actively learning as I use and tweak
+this setup.
+So it is designed to be modular for extensibility as this iterates over time.
+
+The goal is to have custom functional setups across both my laptop and desktop
+computer with all the packages and tools that I use. I plan to share most modules
+across both device as they are for personal work and entertainment, which does
+not differ too much. However, I try to make things with the future extensibility
+in mind. I am interested in home labs and will use this to help me build them
+when time allows.
+
+** Features - Main tools that I use
++ [[https://niri-wm.github.io/niri/][Niri]] :: The *scrolling Wayland compositor*, my preference after having extensive
+  experience with [[https://hypr.land/][Hyprland]], [[https://swaywm.org/][Sway]], [[https://kde.org/plasma-desktop/][KDE Plasma]] and [[https://www.gnome.org/][Gnome]].
++ [[https://waybar.org][Waybar]] :: The minimal yet highly customisable status bar.
++ [[https://fishshell.com][Fish]] :: Current interactive shell of choice, for ease of use.
++ [[https://www.gnu.org/emacs][Emacs]] :: I use [[https://github.com/doomemacs/doomemacs][Doom Emacs]], in this case an "[[https://github.com/marienz/nix-doom-emacs-unstraightened][unstraightened]]" version with my own
+  [[https://github.com/buttergrillcorn/doom][Doom config repository]] imported.
++ [[https://neovim.io][Neovim]] :: I have a somewhat basic Neovim setup using [[https://nix-community.github.io/nixvim/][Nixvim]], my editor of choice
+  if I don't have Emacs. 
++ And more... :: See =modules/features/=.
+  
+** Structure 
+Current project structure, will probably change over time.
+#+begin_src text
+flake/
+  ├── flake.nix             # Entry point
+  ├── flake.lock            # Dependency lockfile
+  ├── hosts/                # Host-specific configurations
+  │   └── laptop/           # Lenovo T480 configuration
+  └── modules/              # Reusable modules
+      ├── core/             # Base system/home configuration
+      └── features/         # specific software stacks
+          ├── cli/          # CLI utilities
+          ├── doom/         # Doom Emacs (unstraightened)
+          ├── neovim/       # Neovim (nixvim)
+          ├── niri/         # Niri WM & configuration
+          ├── shell/        # Fish & configuration
+          ├── utilities/    # Screen locking, etc.
+          └── waybar/       # Status bar configuration
+#+end_src
+
+** Usage
+I use [[https://github.com/nix-community/nh][nh]] for executing Nix related commands because of it's list of useful features
+like shorter commands and more readable outputs.
+
++ To switch to new configuration upon changes:
+#+begin_src bash
+nh os switch . -H laptop
+#+end_src
+
++ To update my Doom configuration:
+#+begin_src bash
+nix flake update doom-config
+git add flake.lock
+nh os switch . -H laptop
+#+end_src
+
++ To perform an update:
+#+begin_src bash
+nix flake update
+git add flake.lock
+nh os switch . -H laptop
+#+end_src
