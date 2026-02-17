@@ -19,6 +19,13 @@
       inputs.nixpkgs.follows = "";
     };
 
+    # --- My Doom Configuration ---
+    # Use 'nix flake update doom-config' to update
+    doom-config = {
+      url = "github:buttergrillcorn/doom";
+      flake = false;
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "";

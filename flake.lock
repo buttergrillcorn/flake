@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "doom-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771288411,
+        "narHash": "sha256-6DfCMXS153RUYhOGQPJtGqVmPuKmltRcVBhAyA90BuU=",
+        "owner": "buttergrillcorn",
+        "repo": "doom",
+        "rev": "bd8fc122744e838476d9a7da93e88e611b78f2ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "buttergrillcorn",
+        "repo": "doom",
+        "type": "github"
+      }
+    },
     "doomemacs": {
       "flake": false,
       "locked": {
@@ -174,6 +190,7 @@
     },
     "root": {
       "inputs": {
+        "doom-config": "doom-config",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
