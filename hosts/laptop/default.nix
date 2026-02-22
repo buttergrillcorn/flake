@@ -32,6 +32,7 @@
       ../../modules/features/doom
       ../../modules/features/cli
       ../../modules/features/utilities
+      ../../modules/features/email
     ];
   };
 

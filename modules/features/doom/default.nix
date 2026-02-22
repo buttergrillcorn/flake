@@ -1,4 +1,8 @@
-{ pkgs, config, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   programs.doom-emacs = {
     enable = true;
@@ -29,6 +33,10 @@
       ))
       # Latex
       texlive.combined.scheme-medium
+      # Email
+      mu
+      isync
+      msmtp
     ];
   };
 
