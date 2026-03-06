@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Start</title>
+        <meta name="Start Page" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <style>
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            }
+
+            body {
+            font-family: monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            }
+
+            .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem;
+            }
+
+            h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: normal;
+            }
+
+            form {
+            width: 100%;
+            }
+
+            input[type="search"] {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-family: monospace;
+            border: 2px solid;
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.2s;
+            }
+        </style>
+    <script>
+      function handleSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+      window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+      }
+      }
+    </script>
+    </head>
+    <body>
+    <div class="container">
+      <h1>*</h1>
+      <form onsubmit="handleSearch(event)">
+        <input type="search" id="search-input" placeholder="search" autofocus autocomplete="off">
+      </form>
+    </div>
+    </body>
+</html>

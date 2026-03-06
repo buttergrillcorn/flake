@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
 }:
 
@@ -16,6 +17,7 @@
 
     # --- Shell ---
     ../../modules/features/shell/default.nix
+
   ];
 
   home-manager.users.james = {
@@ -33,6 +35,7 @@
       ../../modules/features/cli
       ../../modules/features/utilities
       ../../modules/features/email
+      ../../modules/features/browser
     ];
   };
 
@@ -63,10 +66,7 @@
 
   boot.kernelParams = [ "resume_offset=19735808" ];
 
-  # boot.resumeDevice = "/dev/disk/by-uuid/6570630c-618e-4384-b273-c59ce573da14";
   boot.resumeDevice = "/dev/disk/by-uuid/6570630c-618e-4384-b273-c59ce573da14";
-
-  # ---
 
   services.xserver.xkb.options = "ctrl:nocaps";
 

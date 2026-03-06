@@ -51,11 +51,7 @@
       "wheel"
       "video"
     ];
-    packages = with pkgs; [
-    ];
   };
-
-  programs.firefox.enable = true;
 
   # Fix man-cache slow rebuild
   documentation.man.generateCaches = false;
