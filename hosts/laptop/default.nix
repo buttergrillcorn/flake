@@ -78,19 +78,29 @@
 
   # --- Boot Configuration ---
   boot.loader = {
+    timeout = 2;
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
+      copyKernels = true;
+      gfxmodeEfi = "1920x1080";
+      theme = pkgs.minimal-grub-theme;
       # Arch Linux on T480
       extraEntries = ''
         menuentry "Arch Linux" {
-        insmod btrfs
-        search --set=root --fs-uuid 05f5d9a3-3b57-4eee-95c8-0fd424b0cbed
-        linux /@/boot/vmlinuz-linux root=UUID=05f5d9a3-3b57-4eee-95c8-0fd424b0cbed rootflags=subvol rw
-        initrd /@/boot/initramfs-linux.img
+          insmod fat
+          search --no-floppy --fs-uuid --set=root 55BD-8952
+          linux /vmlinuz-linux root=UUID=05f5d9a3-3b57-4eee-95c8-0fd424b0cbed rw rootflags=subvol=/@
+          initrd /intel-ucode.img /initramfs-linux.img
+        }
+        menuentry "Arch Linux (zen)" {
+          insmod fat
+          search --no-floppy --fs-uuid --set=root 55BD-8952
+          linux /vmlinuz-linux-zen root=UUID=05f5d9a3-3b57-4eee-95c8-0fd424b0cbed rw rootflags=subvol=/@
+          initrd /intel-ucode.img /initramfs-linux-zen.img
         }
       '';
     };
