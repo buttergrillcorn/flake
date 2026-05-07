@@ -26,6 +26,11 @@
       flake = false;
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -87,6 +92,7 @@
               }
 
               inputs.nixvim.nixosModules.nixvim
+              inputs.stylix.nixosModules.stylix
             ];
           };
         };

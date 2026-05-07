@@ -18,6 +18,9 @@
     # --- Shell ---
     ../../modules/features/shell/default.nix
 
+    # --- Stylix ---
+    ../../modules/core/stylix.nix
+
   ];
 
   home-manager.users.james = {
@@ -87,7 +90,7 @@
       useOSProber = true;
       copyKernels = true;
       gfxmodeEfi = "1920x1080";
-      theme = pkgs.minimal-grub-theme;
+      # theme = pkgs.minimal-grub-theme;
       # Arch Linux on T480
       extraEntries = ''
         menuentry "Arch Linux" {

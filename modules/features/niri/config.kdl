@@ -68,6 +68,8 @@ layout {
     width 1
     active-color "#7fc8ff"
     inactive-color "#505050"
+    active-color "@base0D@"
+    inactive-color "@base03@"
   }
 }
 

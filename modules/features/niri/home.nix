@@ -41,5 +41,12 @@
     };
   };
 
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  xdg.configFile."niri/config.kdl".text =
+    builtins.replaceStrings
+      [ "@base0D@" "@base03@" ]
+      [
+        config.lib.stylix.colors.withHashtag.base0D
+        config.lib.stylix.colors.withHashtag.base03
+      ]
+      (builtins.readFile ./config.kdl);
 }
