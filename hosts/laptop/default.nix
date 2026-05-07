@@ -38,7 +38,6 @@
 
       ../../modules/features/shell/fish.nix
       ../../modules/features/neovim
-      ../../modules/features/waybar
       ../../modules/features/doom
       ../../modules/features/cli
       ../../modules/features/utilities
