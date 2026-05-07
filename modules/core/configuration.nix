@@ -54,7 +54,7 @@
   };
 
   # Fix man-cache slow rebuild
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   programs.nh = {
     enable = true;
