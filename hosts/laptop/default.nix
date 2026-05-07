@@ -42,15 +42,6 @@
     ];
   };
 
-  programs.light = {
-    enable = true;
-    brightnessKeys = {
-      enable = true;
-      step = 10;
-      minBrightness = 0.1;
-    };
-  };
-
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend-then-hibernate";
     HandleLidSwitchExternalPower = "suspend-then-hibernate";
