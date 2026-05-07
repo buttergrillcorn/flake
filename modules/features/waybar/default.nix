@@ -21,7 +21,7 @@ in
         ;
       batteryScript = "${t480BatteryScript}/bin/t480-battery";
     };
-    style = import ./style.nix { inherit config; };
+    style = import ./style.nix { inherit config lib; };
     # style = builtins.readFile ./style.css;
   };
 

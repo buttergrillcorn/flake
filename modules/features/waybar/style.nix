@@ -1,5 +1,5 @@
-{ config, ... }:
-''
+{ config, lib, ... }:
+lib.mkAfter ''
   * {
     border: none;
     font-family: JetBrainsMono Nerd Font;
@@ -10,8 +10,8 @@
   }
 
   window#waybar {
-    background: transparent;
-    color: #f2f2f2;
+    background: ${config.lib.stylix.colors.withHashtag.base00};
+    color: ${config.lib.stylix.colors.withHashtag.base05};
   }
 
   /* --- All --- */
@@ -35,7 +35,7 @@
     min-width: 25px;
     transition: all 0.3s ease;
     background: transparent;
-    color: #f2f2f2;
+    color: ${config.lib.stylix.colors.withHashtag.base05};
   }
 
   #tooltip {
@@ -62,19 +62,21 @@
   #workspaces button {
     padding: 0 5px;
     margin: 0 5px;
-    color: #f2f2f2;
+    color: ${config.lib.stylix.colors.withHashtag.base05};
+  }
+
+  #workspaces button.focused {
   }
 
   #workspaces button.active {
-
   }
 
   #workspaces button.special {
-
   }
 
   #workspaces button.urgent {
-    color: #f5c2e7
+    border-bottom: 0px;
+    color: ${config.lib.stylix.colors.withHashtag.base08};
   }
 
   #workspaces button:hover {
@@ -90,7 +92,7 @@
 
   #clock {
     background: transparent;
-    color: #f2f2f2;
+    color: ${config.lib.stylix.colors.withHashtag.base05};
   }
 
   /* --- Right --- */

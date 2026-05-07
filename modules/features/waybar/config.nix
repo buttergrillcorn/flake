@@ -17,7 +17,7 @@ in
     position = "top";
     height = 30;
     spacing = 0;
-    margin-top = 2;
+    margin-top = 0;
     margin-bottom = 0;
     margin-left = 0;
     margin-right = 0;
