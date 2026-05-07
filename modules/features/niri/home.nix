@@ -12,16 +12,14 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
-    rofi
     wl-clipboard
     grim
     slurp
     swappy
   ];
 
-  services.polkit-gnome.enable = true;
-  services.gnome-keyring.enable = true;
   services.network-manager-applet.enable = true;
+  programs.rofi.enable = true;
   services.cliphist.enable = true;
   services.hypridle.enable = true;
   programs.hyprlock.enable = true;
