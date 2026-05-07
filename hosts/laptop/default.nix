@@ -66,8 +66,6 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  services.tlp.enable = true;
-
   networking.hostName = "T480";
 
   # --- Boot Configuration ---
