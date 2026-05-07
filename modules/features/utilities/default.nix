@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./screen.nix
   ];
 
   home.packages = with pkgs; [

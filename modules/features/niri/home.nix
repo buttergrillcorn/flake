@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ../utilities/screen.nix # Idle and lock management
     ../waybar
   ];
 
