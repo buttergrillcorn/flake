@@ -72,6 +72,7 @@
     nh
     direnv
     trashy
+    brightnessctl
   ];
 
   services.udisks2.enable = true;

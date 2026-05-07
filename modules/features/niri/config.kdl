@@ -232,10 +232,10 @@ binds {
     XF86AudioMute allow-when-locked=true { spawn "pamixer" "-t"; }
     XF86AudioMicMute allow-when-locked=true { spawn "pamixer" "--default-source" "-t"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "light" "-A" "5"; }
-    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "light" "-A" "1"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "light" "-U" "5"; }
-    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "light" "-U" "1"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
+    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "1%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "1%-"; }
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
