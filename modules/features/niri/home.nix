@@ -22,9 +22,9 @@
   services.gnome-keyring.enable = true;
   services.network-manager-applet.enable = true;
   services.cliphist.enable = true;
-  services.swww.enable = true;
   services.hypridle.enable = true;
   programs.hyprlock.enable = true;
+  services.hyprpaper.enable = true;
   services.swaync.enable = true;
   services.udiskie.enable = true;
 
