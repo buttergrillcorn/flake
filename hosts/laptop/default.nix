@@ -21,6 +21,8 @@
     # --- Stylix ---
     ../../modules/core/stylix.nix
 
+    # --- Gaming ---
+    ../../modules/features/gaming
   ];
 
   home-manager.users.james = {
