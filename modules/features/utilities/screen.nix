@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   # --- Idle and Lock ---
   home.packages = with pkgs; [
@@ -46,14 +51,7 @@
       animations = {
         enabled = true;
       };
-      background = [
-        {
-          path = "screenshot";
-          blur_passes = 3;
-          blur_size = 8;
-        }
-      ];
-      input-field = [
+      input-field = lib.mkForce [
         {
           monitor = "";
           size = "150, 50";
@@ -61,9 +59,11 @@
           dots_size = 0.25;
           dots_spacing = 0.75;
           dots_rounding = 0;
-          outer_color = "#f2f2f2";
-          inner_color = "#f2f2f2";
-          font_color = "#282828";
+          outer_color = config.lib.stylix.colors.withHashtag.base03;
+          inner_color = config.lib.stylix.colors.withHashtag.base00;
+          font_color = config.lib.stylix.colors.withHashtag.base05;
+          check_color = config.lib.stylix.colors.withHashtag.base0A;
+          fail_color = config.lib.stylix.colors.withHashtag.base08;
           font_family = "JetBrainsMono Nerd Font";
           fade_on_empty = false;
           placerholder_text = "ENTER PIN";
