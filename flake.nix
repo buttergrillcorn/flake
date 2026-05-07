@@ -31,12 +31,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
   };
 
   outputs =
     inputs@{
       flake-parts,
       home-manager,
+      plasma-manager,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -88,6 +95,7 @@
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   extraSpecialArgs = { inherit inputs; };
+                  sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 };
               }
 

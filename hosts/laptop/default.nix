@@ -12,8 +12,9 @@
     ./throttled.nix
     ../../modules/core/configuration.nix
 
-    # --- Niri WM ---
+    # --- WM / DE ---
     ../../modules/features/niri/system.nix
+    # ../../modules/features/kde/system.nix
 
     # --- Shell ---
     ../../modules/features/shell/default.nix
@@ -31,8 +32,10 @@
       inputs.nix-doom-emacs-unstraightened.homeModule
       ../../modules/core/home.nix
 
-      # --- Home Modules ---
+      # --- WM / DE ---
+      # ../../modules/features/kde/home.nix
       ../../modules/features/niri/home.nix
+
       ../../modules/features/shell/fish.nix
       ../../modules/features/neovim
       ../../modules/features/waybar
