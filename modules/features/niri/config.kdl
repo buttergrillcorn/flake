@@ -46,7 +46,7 @@ output "eDP-1" {
 
 // --- LAYOUT ---
 layout {
-  gaps 5
+  gaps 8
   center-focused-column "never"
   preset-column-widths {
     proportion 0.33333
@@ -65,9 +65,7 @@ layout {
   default-column-width { proportion 0.5; }
 
   focus-ring {
-    width 1
-    active-color "#7fc8ff"
-    inactive-color "#505050"
+    width 3
     active-color "@base0D@"
     inactive-color "@base03@"
   }
@@ -95,6 +93,7 @@ binds {
     Mod+N hotkey-overlay-title="Emacs" { spawn "sh" "-c" "emacsclient -c"; }
     Mod+Shift+N hotkey-overlay-title="Emacs (GUI)" { spawn "emacs"; }
     Mod+Shift+Ctrl+N hotkey-overlay-title="Reload + Close Emacs (Client)" { spawn "sh" "-c" "systemctl --user restart emacs.service && notify-send \"Emacs Reloaded\""; }
+    Mod+M hotkey-overlay-title="Notification/Messages" { spawn "sh" "-c" "swaync-client -t"; }
     // Mod+ hotkey-overlay-title="" { spawn ""; }
 
     // NAVIGATION
