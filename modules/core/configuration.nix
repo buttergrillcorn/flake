@@ -77,6 +77,21 @@
 
   services.udisks2.enable = true;
 
+  # --- File Management (Thunar) ---
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      thunar-archive-plugin
+      thunar-volman
+      thunar-vcs-plugin
+      thunar-shares-plugin
+      thunar-media-tags-plugin
+      ffmpegthumbnailer # Video thumbnail
+    ];
+  };
+  services.gvfs.enable = true; # For trash, mounting, etc.
+  services.tumbler.enable = true; # For image thumbnails.
+
   fonts.packages = with pkgs; [
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
