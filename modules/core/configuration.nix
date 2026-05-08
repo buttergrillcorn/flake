@@ -23,6 +23,19 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        fcitx5-chinese-addons
+        fcitx5-gtk
+        fcitx5-lua
+      ];
+    };
+  };
+
   services.xserver = {
     enable = true;
     xkb = {
