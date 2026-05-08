@@ -33,10 +33,6 @@ config.set(
 c.auto_save.session = True
 c.session.lazy_restore = True
 
-# Start page
-c.content.local_content_can_access_file_urls = True
-c.content.local_content_can_access_remote_urls = True
-
 # Content blocking (requires: python-adblock from extra repo)
 c.content.blocking.enabled = True
 c.content.blocking.method = "both"  # Use both hosts and brave's adblock
@@ -85,20 +81,11 @@ c.qt.args = [
     # 'disable-features=UseChromeOSDirectVideoDecoder', # Often needed on Linux
 ]
 
-# Font configuration
-c.fonts.default_family = "Noto Sans CJK SC"
-c.fonts.default_size = "10pt"
-c.fonts.web.family.sans_serif = "Noto Sans CJK SC"
-c.fonts.web.family.serif = "Noto Serif CJK SC"
-c.fonts.web.family.fixed = "Maple Mono NF CN"
-c.fonts.web.size.default = 16
-c.fonts.hints = "bold 12pt Maple Mono NF CN"
-
 # Hints
-c.hints.border = "2px solid"
 c.hints.padding = {"bottom": 3, "top": 3, "left": 3, "right": 3}
 c.hints.radius = 0
 c.hints.uppercase = True
+c.fonts.hints = "bold 12pt Maple Mono NF CN"
 
 # Tabs
 c.tabs.position = "top"
