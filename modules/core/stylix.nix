@@ -34,6 +34,19 @@
     };
 
     polarity = "dark";
+
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Ice";
+      size = 24;
+    };
+
+    icons = {
+      enable = true;
+      package = pkgs.qogir-icon-theme;
+      dark = "Qogir-dark";
+      light = "Qogir";
+    };
   };
 
   home-manager.sharedModules = [
