@@ -27,6 +27,21 @@
   services.swaync.enable = true;
   services.udiskie.enable = true;
 
+  # --- Bluetooth ( Bluetuith ) ---
+  programs.bluetuith = {
+    enable = true;
+    settings = {
+      keybindings = {
+        Menu = "m";
+        Quit = "q";
+        NavigateUp = "k";
+        NavigateDown = "j";
+        NavigateLeft = "h";
+        NavigateRight = "l";
+      };
+    };
+  };
+
   # --- Systemd Services ---
   systemd.user.services = {
     # --- XWayland Satellite

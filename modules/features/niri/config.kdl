@@ -4,7 +4,6 @@
 spawn-at-startup "systemctl" "--user" "reset-failed"
 spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
 // spawn-at-startup "nm-applet"
-// spawn-at-startup "blueman-applet"
 // spawn-at-startup "fcitx5"
 // spawn-at-startup "udiskie"
 // spawn-at-startup "wluma"
