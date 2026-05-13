@@ -51,9 +51,16 @@
 
   home-manager.sharedModules = [
     {
-      stylix.targets = {
-        waybar.addCss = false;
-        firefox.profileNames = [ "default" ];
+      stylix = {
+        targets = {
+          fontconfig.enable = true;
+          waybar.addCss = false;
+          firefox.profileNames = [ "default" ];
+          fuzzel.fonts.override = {
+            sansSerif = config.stylix.fonts.monospace;
+            sizes.popups = 8;
+          };
+        };
       };
     }
   ];

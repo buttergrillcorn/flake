@@ -82,7 +82,8 @@ binds {
     Mod+Shift+Escape { power-off-monitors; }
 
     // LAUNCH PROGRAMS
-    Mod+D hotkey-overlay-title="App Menu" { spawn "rofi" "-show" "drun"; }
+    // Mod+D hotkey-overlay-title="App Menu" { spawn "rofi" "-show" "drun"; }
+    Mod+D hotkey-overlay-title="App Menu" { spawn "fuzzel"; }
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Mod+Shift+Return hotkey-overlay-title="Open Terminal (Float)" { spawn "kitty" "--app-id" "kitty-float"; }
     Mod+B hotkey-overlay-title="Open Browser (Qutebrowser)" { spawn "qutebrowser"; }

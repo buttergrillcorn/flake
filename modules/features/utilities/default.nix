@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   imports = [
+    ./anyrun.nix
+    ./fuzzel.nix
   ];
 
   home.packages = with pkgs; [
