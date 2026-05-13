@@ -86,7 +86,7 @@ in
     "clock" = {
       format = "{:L%A %H:%M}";
       format-alt = "{:L%d %B W%V %Y}";
-      tooltip-format = "<tt>{calendar}</tt>}";
+      tooltip-format = "<tt>{calendar}</tt>";
       calendar = {
         mode = "month";
         mode-mon-col = 3;
@@ -143,7 +143,7 @@ in
       format-disabled = "󰂲";
       format-connected = "";
       tooltip-format = "Bluetooth: {num_connections} connected";
-      on-click = "blueman-manager";
+      on-click = "kitty --app-id kitty-float bluetuith";
     };
 
     "wireplumber" = {
