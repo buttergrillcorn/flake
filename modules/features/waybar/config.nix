@@ -30,6 +30,7 @@ in
     modules-center = [ "clock" ];
     modules-right = [
       "group/tray-expander"
+      "custom/notification"
       "cpu"
       "memory"
       "bluetooth"
@@ -205,6 +206,28 @@ in
     "tray" = {
       icon-size = 12;
       spacing = 30;
+    };
+
+    # --- SwayNC ---
+    "custom/notification" = {
+      tooltip = true;
+      format = "{icon}";
+      format-icons = {
+        notification = "󱅫";
+        none = "󰂜";
+        dnd-notification = "󰂠";
+        dnd-none = "󰪓";
+        inhibited-notification = "󰂛";
+        inhibited-none = "󰪑";
+        dnd-inhibited-notification = "󰂛";
+        dnd-inhibited-none = "󰪑";
+      };
+      return-type = "json";
+      exec-if = "which swaync-client";
+      exec = "swaync-client -swb";
+      on-click = "swaync-client -t -sw";
+      on-click-right = "swaync-client -d -sw";
+      escape = true;
     };
   };
 }

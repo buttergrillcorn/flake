@@ -6,8 +6,9 @@
 }:
 {
   imports = [
-    ../utilities/screen.nix # Idle and lock management
     ../waybar
+    ../utilities/screen.nix # Idle and lock management
+    ../utilities/swaync.nix # Notification
   ];
 
   home.packages = with pkgs; [
@@ -24,7 +25,6 @@
   services.hypridle.enable = true;
   programs.hyprlock.enable = true;
   services.hyprpaper.enable = true;
-  services.swaync.enable = true;
   services.udiskie.enable = true;
 
   # --- Bluetooth ( Bluetuith ) ---

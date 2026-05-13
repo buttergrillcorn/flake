@@ -30,6 +30,7 @@ lib.mkAfter ''
   #wireplumber,
   #backlight,
   #custom-battery,
+  #custom-notification,
   #tray {
     margin: 0 10px;
     min-width: 25px;
