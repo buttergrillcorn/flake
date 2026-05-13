@@ -108,6 +108,19 @@
   services.gvfs.enable = true; # For trash, mounting, etc.
   services.tumbler.enable = true; # For image thumbnails.
 
+  # --- Firewall ---
+  networking.firewall = rec {
+    allowedTCPPorts = [ 25565 ]; # Minecraft
+    allowedUDPPorts = [ 4445 ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
+
   fonts.packages = with pkgs; [
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
