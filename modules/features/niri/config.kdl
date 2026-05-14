@@ -1,6 +1,7 @@
 // modules/home/niri/config.kdl
 
 // --- Autostarts ---
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "NIRI_SOCKET"
 spawn-at-startup "systemctl" "--user" "reset-failed"
 spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
 // spawn-at-startup "nm-applet"

@@ -6,11 +6,6 @@
 }:
 {
   # --- Idle and Lock ---
-  home.packages = with pkgs; [
-    hypridle
-    hyprlock
-  ];
-
   services.hypridle = {
     enable = true;
     systemdTarget = "graphical-session.target";
@@ -19,12 +14,12 @@
         lock_cmd = "pidof hyprlock || hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "niri msg action power-on-monitors";
-        ignore_dbus-inhibit = false;
+        ignore_dbus_inhibit = false;
       };
       listener = [
         {
           timeout = 300;
-          on-timout = "brightnessctl -s && brightnessctl set 1%";
+          on-timeout = "brightnessctl -s && brightnessctl set 1%";
           on-resume = "brightnessctl -r";
         }
         {
@@ -45,28 +40,37 @@
     settings = {
       general = {
         hide_cursor = true;
-        disable_loading_bar = false;
-        grace = 0;
       };
       animations = {
         enabled = true;
       };
+      background = lib.mkForce [
+        {
+          path = "${config.stylix.image}";
+          color = "rgb(${config.lib.stylix.colors.base00})";
+          blur_passes = 2;
+          blur_size = 7;
+          noise = 0.0117;
+          contrast = 0.8916;
+          brightness = 0.8172;
+          vibrancy = 0.1696;
+        }
+      ];
       input-field = lib.mkForce [
         {
-          monitor = "";
           size = "150, 50";
           outline_thickness = 3;
           dots_size = 0.25;
           dots_spacing = 0.75;
           dots_rounding = 0;
-          outer_color = config.lib.stylix.colors.withHashtag.base03;
-          inner_color = config.lib.stylix.colors.withHashtag.base00;
-          font_color = config.lib.stylix.colors.withHashtag.base05;
-          check_color = config.lib.stylix.colors.withHashtag.base0A;
-          fail_color = config.lib.stylix.colors.withHashtag.base08;
-          font_family = "JetBrainsMono Nerd Font";
+          outer_color = "rgb(${config.lib.stylix.colors.base03})";
+          inner_color = "rgb(${config.lib.stylix.colors.base00})";
+          font_color = "rgb(${config.lib.stylix.colors.base05})";
+          check_color = "rgb(${config.lib.stylix.colors.base0A})";
+          fail_color = "rgb(${config.lib.stylix.colors.base08})";
+          font_family = "${config.stylix.fonts.monospace.name}";
           fade_on_empty = false;
-          placerholder_text = "ENTER PIN";
+          placeholder_text = "ENTER PIN";
           rounding = 0;
           fail_text = "FAILED";
           position = "0, 0";

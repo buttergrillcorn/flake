@@ -22,8 +22,6 @@
   services.network-manager-applet.enable = true;
   programs.rofi.enable = true;
   services.cliphist.enable = true;
-  services.hypridle.enable = true;
-  programs.hyprlock.enable = true;
   services.hyprpaper.enable = true;
   services.udiskie.enable = true;
 
