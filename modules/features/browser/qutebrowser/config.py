@@ -1,4 +1,4 @@
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 config.set("content.cookies.accept", "all", "chrome-devtools://*")
 config.set("content.cookies.accept", "all", "devtools://*")
 config.set("content.headers.accept_language", "", "https://matchmaker.krunker.io/*")
@@ -79,6 +79,9 @@ c.qt.args = [
     "enable-accelerated-video-decode",
     "enable-features=VaapiVideoDecoder",
     # 'disable-features=UseChromeOSDirectVideoDecoder', # Often needed on Linux
+    # Dark Mode
+    "force-dark-mode",
+    "enable-features=WebUIDarkMode",
 ]
 
 # Hints

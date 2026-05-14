@@ -8,6 +8,7 @@
 {
   programs.qutebrowser = {
     enable = true;
+    loadAutoconfig = true;
     extraConfig = builtins.readFile ./config.py;
     settings = {
       url.start_pages = [ "file://${./startpage.html}" ];
