@@ -140,6 +140,13 @@ c.url.searchengines["img"] = "https://www.google.com/search?tbm=isch&q={}"
 c.url.searchengines["maps"] = "https://www.google.com/maps/search/{}"
 c.url.searchengines["wiki"] = "https://en.wikipedia.org/wiki/{}"
 c.url.searchengines["trans"] = "https://translate.google.com/?sl=auto&tl=en&text={}"
+c.url.searchengines["np"] = (
+    "https://search.nixos.org/packages?channel=unstable&query={}"
+)
+c.url.searchengines["no"] = "https://search.nixos.org/options?channel=unstable&query={}"
+c.url.searchengines["nw"] = (
+    "https://wiki.nixos.org/w/index.php?title=Special%3ASearch&fulltext=1&search={}"
+)
 
 # General keybinds
 config.bind("t.", "config-source")
