@@ -52,6 +52,14 @@
     HandleLidSwitchDocked = "ignore";
   };
 
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernation = "yes";
+    AllowSuspendThenHibernate = "yes";
+    HibernateDelaySec = "1h";
+    HibernateOnACPower = "yes";
+  };
+
   # --- Swap ---
   powerManagement.enable = true;
 
