@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     # --- Network ---
     networkmanager_dmenu
+    proton-vpn
     # --- Audio ---
     wiremix
     pamixer
