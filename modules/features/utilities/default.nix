@@ -14,6 +14,8 @@
     pamixer
     # --- File Management ---
     yazi
+    # --- PDF ---
+    zathura
   ];
 
   # --- External Storage ---

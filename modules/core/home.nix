@@ -36,6 +36,8 @@
       "image/jpeg" = "org.xfce.ristretto.desktop";
       "image/gif" = "org.xfce.ristretto.desktop";
       "image/webp" = "org.xfce.ristretto.desktop";
+      # PDF
+      "application/pdf" = "org.pwmt.zathura.desktop";
     };
   };
 }
