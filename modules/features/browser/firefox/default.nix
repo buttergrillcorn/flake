@@ -34,6 +34,7 @@
         }
       '';
     };
+    nativeMessagingHosts = [ pkgs.tridactyl-native ];
   };
 
 }
