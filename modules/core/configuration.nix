@@ -89,6 +89,10 @@
     direnv
     trashy
     brightnessctl
+    # --- File Management Related (Thunar) ---
+    file-roller
+    ffmpegthumbnailer
+    tumbler
   ];
 
   services.udisks2.enable = true;
@@ -102,7 +106,6 @@
       thunar-vcs-plugin
       thunar-shares-plugin
       thunar-media-tags-plugin
-      ffmpegthumbnailer # Video thumbnail
     ];
   };
   services.gvfs.enable = true; # For trash, mounting, etc.
