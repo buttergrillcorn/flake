@@ -12,6 +12,8 @@
     # --- Audio ---
     wiremix
     pamixer
+    # --- Image ---
+    switcheroo
     # --- Video ---
     mpv-unwrapped
     yt-dlp-light
