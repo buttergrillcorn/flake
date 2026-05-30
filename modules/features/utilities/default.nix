@@ -12,6 +12,9 @@
     # --- Audio ---
     wiremix
     pamixer
+    # --- Video ---
+    mpv-unwrapped
+    yt-dlp-light
     # --- File Management ---
     yazi
     # --- PDF ---
